@@ -55,6 +55,10 @@ public class JogoDadoActivity extends AppCompatActivity implements View.OnClickL
             imgJogador.setImageResource(indice);
         }
         
+        verificaVencedor();
+    }
+
+    private void verificaVencedor() {
         if (dadoComputador > dadoJogador) {
             Toast.makeText(this, "Computador Ganhou!", Toast.LENGTH_LONG).show();
         } else if (dadoComputador < dadoJogador) {
