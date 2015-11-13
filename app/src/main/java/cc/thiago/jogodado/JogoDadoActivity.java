@@ -54,7 +54,7 @@ public class JogoDadoActivity extends AppCompatActivity implements View.OnClickL
             dadoJogador = indice;
             imgJogador.setImageResource(indice);
         }
-        
+
         verificaVencedor();
     }
 
