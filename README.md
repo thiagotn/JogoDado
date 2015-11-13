@@ -6,3 +6,6 @@ Utilize as imagens já fornecidas;
 Para sortear um número entre 0 e 5 utilize o exemplo abaixo (onde n conterá o valor sorteado):
 Random r = new Random(); int n = r.nextInt(6);
 Utilize o Toast para indicar o vencedor.
+
+
+![alt tag](https://raw.githubusercontent.com/thiagotn/JogoDado/master/computador-ganhou.png)
