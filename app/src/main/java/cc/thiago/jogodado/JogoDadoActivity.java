@@ -2,10 +2,13 @@ package cc.thiago.jogodado;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class JogoDadoActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -13,6 +16,16 @@ public class JogoDadoActivity extends AppCompatActivity implements View.OnClickL
     private ImageView imgJogador;
     private Button btnComputador;
     private Button btnJogador;
+    private int [] imagens = new int[]{
+            R.mipmap.dado1,
+            R.mipmap.dado2,
+            R.mipmap.dado3,
+            R.mipmap.dado4,
+            R.mipmap.dado5,
+            R.mipmap.dado6};
+
+    private int dadoComputador = -1;
+    private int dadoJogador = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +37,30 @@ public class JogoDadoActivity extends AppCompatActivity implements View.OnClickL
         btnComputador = (Button) findViewById(R.id.btnComputador);
         btnComputador.setOnClickListener(this);
         btnJogador = (Button) findViewById(R.id.btnJogador);
-        btnComputador.setOnClickListener(this);
+        btnJogador.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+
         if (v.getId() == R.id.btnComputador) {
-            Toast.makeText(this, "Computador Jogando!", Toast.LENGTH_LONG).show();
-        } else if (v.getId() == R.id.btnJogador) {
-            Toast.makeText(this, "Jogador Jogando!", Toast.LENGTH_LONG).show();
+            int indice = imagens[new Random().nextInt(6)];
+            dadoComputador = indice;
+            imgComputador.setImageResource(indice);
+        }
+
+        if (v.getId() == R.id.btnJogador) {
+            int indice = imagens[new Random().nextInt(6)];
+            dadoJogador = indice;
+            imgJogador.setImageResource(indice);
+        }
+        
+        if (dadoComputador > dadoJogador) {
+            Toast.makeText(this, "Computador Ganhou!", Toast.LENGTH_LONG).show();
+        } else if (dadoComputador < dadoJogador) {
+            Toast.makeText(this, "Jogador Ganhou!", Toast.LENGTH_LONG).show();
+        } else if (dadoComputador == dadoComputador) {
+            Toast.makeText(this, "Empate!", Toast.LENGTH_LONG).show();
         }
     }
 }
